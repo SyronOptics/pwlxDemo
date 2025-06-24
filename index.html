@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powell Lens Visualization</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .controls {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .control-group label {
+            font-weight: bold;
+            min-width: 120px;
+        }
+        
+        .control-group input[type="range"] {
+            flex: 1;
+            max-width: 300px;
+        }
+        
+        .control-group .value-display {
+            min-width: 60px;
+            text-align: center;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .visualization {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 400px;
+            background: white;
+        }
+        
+        .panel {
+            flex: 1;
+            height: 350px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            margin: 0 10px;
+            position: relative;
+            background: #fafafa;
+        }
+        
+        .panel-title {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px 15px;
+            font-weight: bold;
+            color: #333;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .svg-container {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .beam-line {
+            stroke: #ff6b6b;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+        
+        .lens {
+            fill: none;
+            stroke: #4ecdc4;
+            stroke-width: 4;
+        }
+        
+        .fan-beam {
+            stroke: #45b7d1;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+        
+        .arrow {
+            fill: #667eea;
+        }
+        
+        .arrowhead {
+            fill: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Powell Lens Visualization</h1>
+            <p>Transform a Gaussian beam into a uniform line of light</p>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="fanAngle">Fan Angle:</label>
+                <input type="range" id="fanAngle" min="10" max="90" value="45" step="5">
+                <span class="value-display" id="fanAngleValue">45°</span>
+            </div>
+        </div>
+        
+        <div class="visualization">
+            <div class="panel">
+                <div class="panel-title">Input Beam</div>
+                <svg class="svg-container" id="inputPanel"></svg>
+            </div>
+            
+            <div class="panel">
+                <div class="panel-title">Powell Lens</div>
+                <svg class="svg-container" id="lensPanel"></svg>
+            </div>
+            
+            <div class="panel">
+                <div class="panel-title">Output Fan</div>
+                <svg class="svg-container" id="outputPanel"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <footer style="text-align:center; padding: 18px 0 8px 0; color: #888; font-size: 1em; background: none;">
+        Made by Fulteng.com, All Right Reserved 2025
+    </footer>
+</body>
+</html> 
